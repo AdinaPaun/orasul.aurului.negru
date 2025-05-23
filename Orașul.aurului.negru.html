@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<script>
+        // Păstrează starea muzicii între pagini
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!sessionStorage.getItem('musicPlaying')) {
+                sessionStorage.setItem('musicPlaying', 'false');
+                sessionStorage.setItem('musicMuted', 'false');
+            }
+
+            const audio = document.getElementById('background-music');
+            const playPauseBtn = document.getElementById('play-pause');
+            const muteBtn = document.getElementById('mute');
+
+            // Restabilim starea anterioară
+            if (sessionStorage.getItem('musicPlaying') === 'true') {
+                audio.play().catch(e => console.log("Auto-play blocat de browser:", e));
+                playPauseBtn.textContent = 'Pause';
+            }
+            
+            if (sessionStorage.getItem('musicMuted') === 'true') {
+                audio.muted = true;
+                muteBtn.textContent = 'Unmute';
+            }
+
+ // Buton play/pause
+            playPauseBtn.addEventListener('click', function() {
+                if (audio.paused) {
+                    audio.play().catch(e => console.log("Eroare play:", e));
+                    playPauseBtn.textContent = 'Pause';
+                    sessionStorage.setItem('musicPlaying', 'true');
+                } else {
+                    audio.pause();
+                    playPauseBtn.textContent = 'Play';
+                    sessionStorage.setItem('musicPlaying', 'false');
+                }
+            });
+
+            // Buton mute/unmute
+            muteBtn.addEventListener('click', function() {
+                if (audio.muted) {
+                    audio.muted = false;
+                    muteBtn.textContent = 'Mute';
+                    sessionStorage.setItem('musicMuted', 'false');
+                } else {
+                    audio.muted = true;
+                    muteBtn.textContent = 'Unmute';
+                    sessionStorage.setItem('musicMuted', 'true');
+                }
+            });
+        });
+    </script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Orașul.aurului.negru</title>
+</head>
+<body>
+<div id="audio-player" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+    <audio id="background-music" loop>
+        <source src="simfonia.mp3" type="audio/mpeg">
+    </audio>
+    <button id="play-pause" style="background: linear-gradient(to right, #ffeb3b, #2196f3); color: white; border: none; padding: 10px 15px; border-radius: 5px; margin-right: 5px; cursor: pointer;">Play</button>
+    <button id="mute" style="background: linear-gradient(to right, #ffeb3b, #2196f3); color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">Mute</button>
+</div>
+  <h1>O SCURTĂ CĂLĂTORIE PRIN ORAȘUL AURULUI NEGRU...</h1>
+  <nav>
+    <a href="Ploieștiul.la.pas.html">Ploieștiul la pas</a> 
+    <a href="Ce.se.mai.întâmplă.prin.Ploiești.html">Ce se mai întâmplă prin Ploiești?</a>
+  </nav>
+  <p> Istorie, cultură, jazz și voie bună - acesta este orașul meu!</p>
+</body>
+</html>
+<marquee direction="left" style="color: yellow; background-color: #001f4d; padding: 10px; font-size: 18px;">
+ Orașul lui Caragiale, al ceasurilor, al petrolului, dar și al sufletului meu – explorează locul pe care îl numesc „acasă” !
+</marquee>
+<p style="color:YELLOW; background-color:#1b263b; padding:10px; border-left:4px solid white;">
+  Știai că în timpul Primului Război Mondial, rafinăriile din Ploiești au fost sabotate chiar de români ca să nu cadă în mâinile nemților?
+</p>
+<style>
+    body {
+        background: url('rafinarie.jpg') no-repeat center center fixed;
+        background-size: cover;
+        
+        /* Asigură-te că conținutul este lizibil */
+        min-height: 100vh;
+    }
+    /* Pentru ecrane mici */
+    @media (max-width: 768px) {
+        body {
+            background-attachment: scroll; /* Dezactivează fixed pe mobile */
+        }
+    }
+</style>
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Rafinăria din Ploiești</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0d1b2a;
+      color: #ffffff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    section {
+      background-color: #1b263b;
+      border: 2px solid #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 900px;
+margin: 40px auto;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    h2 {
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    p {
+      line-height: 1.6;
+      text-align: justify;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+<section>
+  <h2>Prima rafinărie din lume – Ploiești, 1857</h2>
+  <p>
+    Cea dintâi rafinărie din lume dotată cu instalații moderne pentru vremea respectivă a fost un proiect început la Ploiești în decembrie 1856 de către Teodor Mehedințeanu. Acesta, după ce s-a documentat în Franța și Germania, a comandat utilajele necesare și a realizat proiectul în primăvara anului 1857. Astfel, „fabrica de gaz” a fost pusă în funcțiune pe numele fratelui său, Marin Mehedințeanu, arendaș al unor zăcăminte de țiței pe moșia Păcureți, județul Prahova.
+  </p>
+  <p>
+ Începutul distilării industriale a țițeiului la Ploiești a marcat un moment istoric, transformând orașul într-un punct de referință în industria petrolieră mondială și câștigându-i renumele de „capitală a aurului negru”. Potrivit lui Mihail Sevastos, autorul monografiei Ploieștilor, în etapa ulterioară, harta orașului a fost îmbogățită cu noi rafinării în anii 1866, 1879, 1872, 1880, 1884, 1894, 1905, 1906 și 1910, ajungând în 1937 la un total de 15 rafinării.
+  </p>
+  <p>
+Datorită producției rafinăriei din Ploiești, frații Teodor și Marin Mehedințeanu au reușit să obțină prin licitație concesiunea pentru iluminatul public cu gaz lampant al Bucureștiului, în anul 1857, și al Ploieștiului, în 1860. Astfel, Bucureștiul a devenit primul oraș din lume iluminat public cu petrol lampant.
+  </p>
+  <p>
+Petrolul lampant produs la Ploiești se remarca prin calități excepționale: era incolor, inodor și ardea cu o flacără luminoasă, constantă, fără fum și fără a lăsa reziduuri sau compuși rășinoși în fitil. Aceste caracteristici au făcut oferta Mehedințeanu extrem de avantajoasă, mai ales în comparație cu alți competitori care propuneau uleiuri vegetale, precum cel de rapiță sau de nucă, la prețuri duble.
+  </p>
+  <p>
+    Oferta fraților Mehedințeanu, de 336 de lei pentru fiecare felinar, a fost mult mai accesibilă decât alternativa de 600 de lei/an, eliminând astfel orice concurență. Începând cu 1 aprilie 1857, Bucureștiul a fost iluminat de 1.000 de lămpi cu petrol lampant, un pas important în modernizarea orașului.
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+</head>
+
+<footer style="text-align:center; color:white; margin-top:40px; font-family:'Cinzel', serif; font-style:italic;">
+  &copy; 2025 Proiect realizat de Păun Adina-Iulia | FAIMA 1512 R
+</footer>
